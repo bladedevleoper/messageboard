@@ -3,18 +3,6 @@ require_once 'Database.php';
 require_once 'Post.php';
 require_once 'Display.php';
 
-
-if(isset($_POST['user']) && isset($_POST['message'])){
-	$user = $_POST['user'];
-	$message = $_POST['message'];
-		if($user != Null && $message != Null){
-			$post = new POST();
-			$post->postMessage($user, $message);
-		} else {
-		echo '<div>Please fill in the input boxes</div';
-	}
-} 
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +19,20 @@ if(isset($_POST['user']) && isset($_POST['message'])){
 	<textarea name="message" id="message" placeholder="Your Message here"></textarea>
 	<button type="Submit">Submit</button>
 </form>
+
+<?php
+if(isset($_POST['user']) && isset($_POST['message'])){
+	$user = $_POST['user'];
+	$message = $_POST['message'];
+		if($user != Null && $message != Null){
+			$post = new POST();
+			$post->postMessage($user, $message);
+		} else {
+		echo '<div>Please fill in the input boxes</div>';
+	}
+} 
+?>
+
 <h1>Messages are displayed below</h1>
 <?php
 	$display = new Display();
